@@ -55,8 +55,8 @@ class _LogInPageState extends State<LogInPage> {
               CustomTextFild(
                 extraValidator: () {
                   if (phoneNumber?.length != 10 ||
-                      phoneNumber![0] != 0 ||
-                      phoneNumber![1] != 9) {
+                      phoneNumber![0] != '0' ||
+                      phoneNumber![1] != '9') {
                     return "The Phone Number you entered is wrong";
                   }
                 },
