@@ -38,7 +38,7 @@ class _LogInPageState extends State<LogInPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "assets/images/undraw_Login_re_4vu2.png",
+                    "assets/images/Login.png",
                     height: 200,
                   )
                 ],
@@ -133,8 +133,9 @@ class _LogInPageState extends State<LogInPage> {
         url: '$baseUrl/login',
         body: {"phone": "$phoneNumber", "password": "$password"},
       );
-
       await CacheNetwork.insertToCache(key: 'token', value: data['token']);
+      await CacheNetwork.insertToCache(
+          key: 'username', value: data['username']);
       Navigator.pop(context);
       Navigator.pushReplacementNamed(context, HomePage.id);
     } catch (e) {
@@ -142,12 +143,20 @@ class _LogInPageState extends State<LogInPage> {
       Navigator.pop(context);
       showSnackBar(
         context,
-        massege: e.toString() ==
-                "Exception: there is a problem with status code 401 with body {message: phone number is incorrect}"
-            ? "phone number is incorrect"
-            : "password is incorrect",
+        massege: getmessage(e.toString()),
         color: Colors.red,
       );
     }
+  }
+
+  getmessage(String message) {
+    if (message ==
+        "Exception: there is a problem with status code 401 with body {message: phone number is not exist}")
+      return "Phone Number is not exist"; //arabic
+    else if (message ==
+        "Exception: there is a problem with status code 401 with body {message: password is incorrect}")
+      return "Password is incorrect"; //arabic
+    else
+      return message;
   }
 }

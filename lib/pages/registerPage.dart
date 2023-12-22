@@ -39,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "assets/images/undraw_Mobile_login_re_9ntv.png",
+                    "assets/images/register.png",
                     height: 200,
                   )
                 ],
@@ -141,25 +141,42 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> register(BuildContext context) async {
-    Map<String, dynamic> data = await Api().post(
-      url: '$baseUrl/register',
-      body: {
-        "username": "$userName",
-        "phone": "$phoneNumber",
-        "password": "$password"
-      },
-    );
-    if (data['message'] == "Registration successful") {
+    try {
+      Map<String, dynamic> data = await Api().post(
+        url: '$baseUrl/register',
+        body: {
+          "username": "$userName",
+          "phone": "$phoneNumber",
+          "password": "$password"
+        },
+      );
+      await CacheNetwork.insertToCache(
+          key: 'username', value: data['username']);
       await CacheNetwork.insertToCache(key: 'token', value: data['token']);
       Navigator.pop(context);
       Navigator.pushReplacementNamed(context, HomePage.id);
-    } else {
+    } catch (e) {
+      print(e.toString());
       showSnackBar(
         context,
-        massege: data["message"],
+        massege: getmessage(e.toString()),
         color: Colors.red,
       );
       Navigator.pop(context);
     }
+  }
+
+  getmessage(String message) {
+    if (message ==
+        "Exception: there is a problem with status code 400 with body {message: User already exists}")
+      return "User already exist"; //arabic
+    else if (message ==
+        "Exception: there is a problem with status code 400 with body {message: phone number must be 10 numbers}")
+      return "Phone Number must be 10 Numbers"; //arabic
+    else if (message ==
+        "Exception: there is a problem with status code 400 with body {message: password must be 8 char at least}")
+      return "Password must be 8 char at least"; //arabic
+    else
+      return message;
   }
 }

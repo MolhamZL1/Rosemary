@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medecin_app/constants.dart';
+import 'package:medecin_app/helper/showSnackBar.dart';
 import 'package:medecin_app/models/medicine_model.dart';
 import 'package:medecin_app/services/search_category_service.dart';
 import 'package:medecin_app/services/search_medicin.dart';
@@ -27,6 +28,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -48,8 +50,12 @@ class _SearchPageState extends State<SearchPage> {
               border: InputBorder.none,
             ),
             onSubmitted: (value) {
-              print(value);
-              searchingInput = value;
+              if (value.isEmpty) {
+                showSnackBar(context,
+                    massege: "Enter any thing", color: Colors.red);
+              } else {
+                searchingInput = value;
+              }
               setState(() {});
             },
           ),
@@ -91,22 +97,25 @@ class _SearchPageState extends State<SearchPage> {
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             List<dynamic> categories = snapshot.data!;
-                            return GridView.builder(
-                                itemCount: categories.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        childAspectRatio: 1.2,
-                                        crossAxisSpacing: 10,
-                                        mainAxisSpacing: 20),
-                                itemBuilder: (context, index) {
-                                  return CustomCategoryCard(
-                                    category: categories[index],
-                                  );
-                                });
-                          }
-                          //put a nice image here
-                          else {
+                            return categories.isEmpty
+                                ? Center(
+                                    child: Image.asset(
+                                        "assets/images/searching_not_found.png"),
+                                  )
+                                : GridView.builder(
+                                    itemCount: categories.length,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            childAspectRatio: 1.2,
+                                            crossAxisSpacing: 10,
+                                            mainAxisSpacing: 20),
+                                    itemBuilder: (context, index) {
+                                      return CustomCategoryCard(
+                                        category: categories[index],
+                                      );
+                                    });
+                          } else {
                             return Center(child: CircularProgressIndicator());
                           }
                         })
@@ -116,31 +125,31 @@ class _SearchPageState extends State<SearchPage> {
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             List<MedicineModel> medicines = snapshot.data!;
-                            return GridView.builder(
-                                itemCount: medicines.length,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        childAspectRatio: 1.6,
-                                        crossAxisSpacing: 10,
-                                        mainAxisSpacing: 20),
-                                itemBuilder: (context, index) {
-                                  return CustomCard(
-                                    medicine: medicines[index],
-                                  );
-                                });
-                          } //put a nice image here
-                          else {
+                            return medicines.isEmpty
+                                ? Center(
+                                    child: Image.asset(
+                                        "assets/images/searching_not_found.png"),
+                                  )
+                                : GridView.builder(
+                                    itemCount: medicines.length,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 2,
+                                            childAspectRatio: 1.6,
+                                            crossAxisSpacing: 10,
+                                            mainAxisSpacing: 20),
+                                    itemBuilder: (context, index) {
+                                      return CustomCard(
+                                        medicine: medicines[index],
+                                      );
+                                    });
+                          } else {
                             return Center(child: CircularProgressIndicator());
                           }
                         }),
               )
             : Center(
-                child: Image.asset(
-                  "assets/images/undraw_Searching_re_3ra9.png",
-                  height: 10,
-                ),
-              ) //put a nice image here,
-        );
+                child: Image.asset("assets/images/search.png"),
+              ));
   }
 }

@@ -33,6 +33,7 @@ class _LogoPageState extends State<LogoPage> {
   Future<void> getToken() async {
     await CacheNetwork.cacheInitialization();
     token = await CacheNetwork.getCacheData(key: 'token');
+    username = await CacheNetwork.getCacheData(key: 'username');
   }
 
   @override

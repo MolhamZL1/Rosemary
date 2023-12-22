@@ -19,143 +19,315 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  String? quantity;
+  int _quantity = 0;
   @override
   Widget build(BuildContext context) {
     MedicineModel medicin =
         ModalRoute.of(context)!.settings.arguments as MedicineModel;
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color(0xFF0F919E),
-              Color(0xFF3AAFB8),
-              Color(0xFF63CAD1),
-            ],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          )),
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              colors: [
+                Color(0xFF0F919E),
+                Color(0xFF3AAFB8),
+                Color(0xFF63CAD1),
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            )),
+          ),
+          title: Text(medicin.trade_name),
+          actions: [
+            IconButton(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite_outline,
+                )),
+            IconButton(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                onPressed: () {
+                  Navigator.pushNamed(context, CartPage.id);
+                },
+                icon: Icon(
+                  FontAwesomeIcons.cartPlus,
+                ))
+          ],
         ),
-        title: Text(medicin.trade_name),
-        actions: [
-          IconButton(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              onPressed: () {},
-              icon: Icon(
-                Icons.favorite_outline,
-              )),
-          IconButton(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              onPressed: () {
-                Navigator.pushNamed(context, CartPage.id);
-              },
-              icon: Icon(
-                FontAwesomeIcons.cartPlus,
-              ))
-        ],
-      ),
-      backgroundColor: Color(0xFFECE6E6),
-      body: Center(
-        child: Column(
+        backgroundColor: Colors.white,
+        body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: ListView(
+            Image.asset(
+              "assets/images/undraw_medicine_b1ol.png",
+              height: 250,
+            ),
+            Container(
+              height: 400,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(0.9),
+                        blurRadius: 40,
+                        spreadRadius: 20,
+                        offset: Offset(10, 10)),
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(55),
+                      topRight: Radius.circular(55))),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomMedicine(
-                      upper: S.of(context).scientificName,
-                      lower: medicin.scientific_name),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomMedicine(
-                          upper: S.of(context).category,
-                          lower: medicin.category,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "${S.of(context).product_Name} : "
+                          "${medicin.scientific_name}",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      Expanded(
-                          child: CustomMedicine(
-                        upper: S.of(context).factory,
-                        lower: medicin.manufacturer,
-                      ))
-                    ],
+                        Container(
+                          height: 60,
+                          width: 100,
+                          child: Center(
+                              child: Text(
+                            r"$" "${medicin.price}",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          )),
+                          decoration: BoxDecoration(
+                              color: kcolor,
+                              borderRadius: BorderRadius.circular(20)),
+                        )
+                      ],
+                    ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: CustomMedicine(
-                          upper: S.of(context).price,
-                          lower: medicin.price.toString(),
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 22, vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${S.of(context).category} : "
+                                  "${medicin.category}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 22, vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${S.of(context).factory} : "
+                                  "${medicin.manufacturer}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 22, vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "expiry date : "
+                                  "${medicin.expiry_date.year}/${medicin.expiry_date.month}/${medicin.expiry_date.day}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 22, vertical: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "${S.of(context).quantity} : "
+                                  "${medicin.quantity_available}",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      Expanded(
-                          child: CustomMedicine(
-                        upper: S.of(context).quantity,
-                        lower: medicin.quantity_available.toString(),
-                      )),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomMedicine(
-                          upper: S.of(context).DateTime,
-                          lower: "${medicin.expiry_date.year}"
-                              "/"
-                              "${medicin.expiry_date.month}"
-                              "/"
-                              "${medicin.expiry_date.day}",
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          height: 60,
+                          width: 150,
+                          decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(55)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  if (_quantity != 0) {
+                                    _quantity--;
+                                    setState(() {});
+                                  }
+                                },
+                                child: CircleAvatar(
+                                  radius: 22,
+                                  backgroundColor: kcolor,
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "${_quantity}",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  _quantity++;
+                                  setState(() {});
+                                },
+                                child: CircleAvatar(
+                                  radius: 22,
+                                  backgroundColor: kcolor,
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                        ElevatedButton(
+                            style: ButtonStyle(
+                                shape: MaterialStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(22),
+                                  ),
+                                ),
+                                fixedSize:
+                                    MaterialStateProperty.all(Size(180, 60)),
+                                backgroundColor:
+                                    MaterialStateProperty.all(kcolor)),
+                            onPressed: () async {
+                              if (_quantity != 0) {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Center(
+                                          child: CircularProgressIndicator());
+                                    });
+                                try {
+                                  await AddToCartService().addToCartService({
+                                    "id": medicin.id,
+                                    "quantity": _quantity.toString(),
+                                    "token": token
+                                  });
+                                } on Exception catch (e) {
+                                  showSnackBar(context,
+                                      massege: "الكمية المطلوبة غير متاحة",
+                                      color: Colors.red);
+                                }
+                                Navigator.pop(context);
+                                showSnackBar(context,
+                                    massege: "Added", color: Colors.green);
+                                _quantity = 0;
+                                setState(() {});
+                              } else
+                                showSnackBar(context,
+                                    massege: "insert quantity",
+                                    color: Colors.red);
+                            },
+                            child: Text("Add To Cart"))
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                style: TextStyle(fontFamily: 'Kanit', color: Color(0xff51BEC4)),
-                keyboardType: TextInputType.number,
-                onChanged: (data) {
-                  quantity = data;
-                },
-                onSubmitted: (data) {
-                  quantity = data;
-                },
-                decoration: InputDecoration(
-                    hintText: S.of(context).Enter_the_quantity,
-                    suffixIcon: IconButton(
-                      padding: EdgeInsets.only(right: 15),
-                      onPressed: () async {
-                        try {
-                          await AddToCartService().addToCartService({
-                            "id": medicin.id,
-                            "quantity": quantity,
-                            "token": token
-                          });
-                        } on Exception catch (e) {
-                          showSnackBar(context,
-                              massege: "الكمية المطلوبة غير متاحة",
-                              color: Colors.red);
-                        }
-                      },
-                      icon: Icon(FontAwesomeIcons.cartPlus),
-                      color: kcolor,
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: kcolor)),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: kcolor))),
-              ),
-            ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
+  // Padding(
+  //             padding: const EdgeInsets.all(8.0),
+  //             child: TextField(
+  //               style: TextStyle(fontFamily: 'Kanit', color: Color(0xff51BEC4)),
+  //               keyboardType: TextInputType.number,
+  //               onChanged: (data) {
+  //                 quantity = data;
+  //               },
+  //               onSubmitted: (data) {
+  //                 quantity = data;
+  //               },
+  //               decoration: InputDecoration(
+  //                   hintText: S.of(context).Enter_the_quantity,
+  //                   suffixIcon: IconButton(
+  //                     padding: EdgeInsets.only(right: 15),
+  //                     onPressed: () async {
+  //                       try {
+  //                         await AddToCartService().addToCartService({
+  //                           "id": medicin.id,
+  //                           "quantity": quantity,
+  //                           "token": token
+  //                         });
+  //                       } on Exception catch (e) {
+  //                         showSnackBar(context,
+  //                             massege: "الكمية المطلوبة غير متاحة",
+  //                             color: Colors.red);
+  //                       }
+  //                     },
+  //                     icon: Icon(FontAwesomeIcons.cartPlus),
+  //                     color: kcolor,
+  //                   ),
+  //                   enabledBorder: OutlineInputBorder(
+  //                       borderRadius: BorderRadius.circular(20),
+  //                       borderSide: BorderSide(color: kcolor)),
+  //                   border: OutlineInputBorder(
+  //                       borderRadius: BorderRadius.circular(20),
+  //                       borderSide: BorderSide(color: kcolor))),
+  //             ),
+  //           ),

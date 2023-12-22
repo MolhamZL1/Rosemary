@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:medecin_app/generated/l10n.dart';
-import 'package:medecin_app/pages/OrderPage.dart';
 import 'package:medecin_app/pages/cartPage.dart';
 import 'package:medecin_app/pages/favouritPage.dart';
 import 'package:medecin_app/pages/homePage.dart';
@@ -41,7 +40,6 @@ class MedecinApp extends StatelessWidget {
           SearchPage.id: (context) => SearchPage(),
           CartPage.id: (context) => CartPage(),
           ProductPage.id: (context) => ProductPage(),
-          OrderPage.id: (context) => OrderPage(),
           FavouritesPage.id: (context) => FavouritesPage(),
           NotficationsPage.id: (context) => NotficationsPage(),
         },

@@ -19,6 +19,7 @@ class ProductsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     String category = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -59,26 +60,22 @@ class ProductsPage extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<MedicineModel> medicines = snapshot.data!;
-                return GridView.builder(
-                    itemCount: medicines.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1.6,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 20),
-                    itemBuilder: (context, index) {
-                      return medicines != []
-                          ? CustomCard(
-                              medicine: medicines[index],
-                            )
-                          : Center(
-                              child: Image.asset(
-                                  "assets/images/undraw_Searching_re_3ra9.png"),
-                            );
-                    });
-              } else {
+                return medicines.isEmpty
+                    ? Center(child: Image.asset("assets/images/Empty.png"))
+                    : GridView.builder(
+                        itemCount: medicines.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1.6,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 20),
+                        itemBuilder: (context, index) {
+                          return CustomCard(
+                            medicine: medicines[index],
+                          );
+                        });
+              } else
                 return Center(child: CircularProgressIndicator());
-              }
             }),
       ),
     );

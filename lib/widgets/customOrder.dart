@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:medecin_app/pages/OrderPage.dart';
+import 'package:medecin_app/models/OrderModel.dart';
+import 'package:medecin_app/models/medicine_model.dart';
 
 import '../generated/l10n.dart';
 
 class CustomOrder extends StatelessWidget {
-  const CustomOrder({super.key});
+  CustomOrder({required this.order});
+  OrderModel? order;
 
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, OrderPage.id);
-      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -25,7 +23,7 @@ class CustomOrder extends StatelessWidget {
             end: Alignment.centerRight,
           ),
         ),
-        height: 120,
+        height: 150,
         child: Padding(
           padding: EdgeInsets.all(16),
           child: Column(
@@ -33,18 +31,22 @@ class CustomOrder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                S.of(context).Order_Number,
+                "${S.of(context).Order_Number} : ${order!.ordernumber}",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+              Text(
+                "${S.of(context).state} : ${order!.status}",
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    S.of(context).quantity,
+                    "${order!.paid}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(
-                    S.of(context).state,
+                    r"$" "${order!.total_price.toString()}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ],
