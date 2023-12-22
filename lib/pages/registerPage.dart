@@ -66,6 +66,13 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 12),
               CustomTextFild(
+                extraValidator: () {
+                  if (phoneNumber?.length != 10 ||
+                      phoneNumber![0] != '0' ||
+                      phoneNumber![1] != '9') {
+                    return "The Phone Number you entered is wrong";
+                  }
+                },
                 onChanged: (value) {
                   setState(() {
                     phoneNumber = value;
@@ -77,6 +84,11 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 12),
               CustomTextFild(
+                extraValidator: () {
+                  if (password!.length < 6) {
+                    return "The password should be at least 6 digit";
+                  }
+                },
                 onChanged: (value) {
                   setState(() {
                     password = value;

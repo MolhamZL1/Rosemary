@@ -7,7 +7,9 @@ class CustomTextFild extends StatelessWidget {
       this.icon,
       required this.obsecure,
       this.keyboardType,
-      required this.onChanged});
+      required this.onChanged,
+      this.extraValidator});
+  String? Function()? extraValidator;
 
   String? hintText;
   IconButton? icon;
@@ -19,12 +21,11 @@ class CustomTextFild extends StatelessWidget {
     return TextFormField(
       validator: (data) {
         if (data!.isEmpty) {
-          if (hintText == "Phone Number")
-            return "Enter The Phone Number";
-          else if (hintText == "User Name")
-            return "Enter The User Name";
-          else
-            return "Enter The Password";
+          return "Enter the $hintText";
+        }
+        if (extraValidator != null) {
+          String? error = extraValidator!();
+          return error;
         }
       },
       onChanged: onChanged,

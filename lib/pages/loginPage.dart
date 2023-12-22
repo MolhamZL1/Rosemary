@@ -53,6 +53,13 @@ class _LogInPageState extends State<LogInPage> {
               ),
               const SizedBox(height: 12),
               CustomTextFild(
+                extraValidator: () {
+                  if (phoneNumber?.length != 10 ||
+                      phoneNumber![0] != '0' ||
+                      phoneNumber![1] != '9') {
+                    return "The Phone Number you entered is wrong";
+                  }
+                },
                 keyboardType: TextInputType.phone,
                 onChanged: (value) {
                   setState(() {
@@ -64,6 +71,11 @@ class _LogInPageState extends State<LogInPage> {
               ),
               const SizedBox(height: 12),
               CustomTextFild(
+                extraValidator: () {
+                  if (password!.length < 6) {
+                    return "The password is wrong";
+                  }
+                },
                 onChanged: (value) {
                   setState(() {
                     password = value;
