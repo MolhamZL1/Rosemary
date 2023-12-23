@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medecin_app/constants.dart';
 import 'package:medecin_app/generated/l10n.dart';
 import 'package:medecin_app/helper/MyDrawer.dart';
 import 'package:medecin_app/pages/cartPage.dart';
@@ -8,6 +9,7 @@ import 'package:medecin_app/pages/OrdersPage.dart';
 import 'package:medecin_app/pages/notfPage.dart';
 import 'package:medecin_app/pages/searchPage.dart';
 import 'package:medecin_app/services/all_categories_service.dart';
+import 'package:medecin_app/shared/shared.dart';
 import 'package:medecin_app/widgets/customCategoryCard.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,6 +22,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentPageIndex = 0;
   var pages = [HomePage(), OrdersPage(), FavouritesPage(), NotficationsPage()];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getToken();
+  }
 
   String getTitle() {
     if (currentPageIndex == 0)
@@ -30,6 +38,12 @@ class _HomePageState extends State<HomePage> {
       return S.of(context).Favourite;
     else
       return S.of(context).Notifications;
+  }
+
+  Future<void> getToken() async {
+    await CacheNetwork.cacheInitialization();
+    token = await CacheNetwork.getCacheData(key: 'token');
+    username = await CacheNetwork.getCacheData(key: 'username');
   }
 
   @override

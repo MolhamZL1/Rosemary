@@ -8,7 +8,7 @@ class OrdersPage extends StatelessWidget {
   static String id = "OrdersPage";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
         child: FutureBuilder<List<OrderModel>>(
