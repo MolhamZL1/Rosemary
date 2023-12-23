@@ -27,31 +27,28 @@ class CustomCategoryCard extends StatelessWidget {
             elevation: 10,
             color: const Color(0xFF3AAFB8),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
                   child: SizedBox(
                     width: double.infinity,
                     child: FittedBox(
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                       child: Row(
                         children: [
                           Image.asset(
-                            "assets/images/mm.jpg",
+                            getimage(),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Center(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Text(
-                        category!,
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    child: Text(
+                      category!,
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
                 )
@@ -59,5 +56,20 @@ class CustomCategoryCard extends StatelessWidget {
             )),
       ),
     );
+  }
+
+  getimage() {
+    if (category == "Analgesic")
+      return "assets/images/Anti.jpg";
+    else if (category == "Antibiotic")
+      return "assets/images/R (1).jpg";
+    else if (category == "Anti-inflammatory")
+      return "assets/images/R (2).jpg";
+    else if (category == "Antipyretic")
+      return "assets/images/R.jpg";
+    else if (category == "Antihistamine")
+      return "assets/images/R (3).jpg";
+    else
+      return "assets/images/R (4).jpg";
   }
 }
