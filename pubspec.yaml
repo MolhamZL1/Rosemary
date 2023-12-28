@@ -87,6 +87,8 @@ flutter:
     - assets/images/R (2).jpg
     - assets/images/R (3).jpg
     - assets/images/R (4).jpg
+    - assets/images/undraw_swipe_options_2e4v (1).png
+    - assets/images/undraw_My_notifications_re_ehmk.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

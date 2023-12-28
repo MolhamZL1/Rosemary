@@ -36,9 +36,17 @@ class MyDrawer extends StatelessWidget {
                       radius: 50,
                       backgroundImage:
                           AssetImage(klogo)), //put the logo app here
-                  SizedBox(
-                    height: 10,
-                  ),
+                  Row(
+                    children: [
+                      Text(
+                        username!,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "Pacifico",
+                            fontSize: 20),
+                      ),
+                    ],
+                  )
                 ],
               ))),
           ListTile(
@@ -60,9 +68,11 @@ class MyDrawer extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             TextButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   Provider.of<dProvider>(context, listen: false)
                                       .setLanguage('ar');
+                                  await CacheNetwork.insertToCache(
+                                      key: 'language', value: "ar");
                                   Navigator.pop(context);
                                 },
                                 child: Text(
@@ -70,9 +80,11 @@ class MyDrawer extends StatelessWidget {
                                   style: TextStyle(color: kcolor),
                                 )),
                             TextButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   Provider.of<dProvider>(context, listen: false)
                                       .setLanguage('en');
+                                  await CacheNetwork.insertToCache(
+                                      key: 'language', value: "en");
                                   Navigator.pop(context);
                                 },
                                 child: Text(
@@ -105,7 +117,7 @@ class MyDrawer extends StatelessWidget {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("No"),
+                            child: Text(S.of(context).No),
                           ),
                           TextButton(
                             onPressed: () async {
@@ -113,16 +125,16 @@ class MyDrawer extends StatelessWidget {
                               Navigator.pushReplacementNamed(
                                   context, LogInPage.id);
                             },
-                            child: Text("Yes"),
+                            child: Text(S.of(context).Yes),
                           ),
                         ],
                       ),
                     )
                   ],
-                  title: Text("Logout"),
+                  title: Text(S.of(context).Log_Out),
                   contentPadding: EdgeInsets.all(20),
                   content: Text(
-                    "Are you sure?",
+                    S.of(context).AreYouSure,
                     style: TextStyle(color: kcolor),
                   ),
                 ),

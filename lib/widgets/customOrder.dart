@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medecin_app/models/OrderModel.dart';
-import 'package:medecin_app/models/medicine_model.dart';
 
 import '../generated/l10n.dart';
 
@@ -9,6 +8,21 @@ class CustomOrder extends StatelessWidget {
   OrderModel? order;
 
   Widget build(BuildContext context) {
+    getTextpaid() {
+      return order!.paid == "Not Paid"
+          ? S.of(context).not_paid
+          : S.of(context).Paid;
+    }
+
+    getText() {
+      if (order!.status == "preparing")
+        return S.of(context).preparing;
+      else if (order!.paid == "sending")
+        return S.of(context).sending;
+      else
+        return S.of(context).recived;
+    }
+
     return GestureDetector(
       child: Container(
         decoration: BoxDecoration(
@@ -35,14 +49,14 @@ class CustomOrder extends StatelessWidget {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               Text(
-                "${S.of(context).state} : ${order!.status}",
+                "${S.of(context).state} : ${getText()}",
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "${order!.paid}",
+                    "${getTextpaid()}",
                     style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   Text(

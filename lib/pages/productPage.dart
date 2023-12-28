@@ -5,7 +5,6 @@ import 'package:medecin_app/generated/l10n.dart';
 import 'package:medecin_app/helper/showSnackBar.dart';
 import 'package:medecin_app/models/medicine_model.dart';
 import 'package:medecin_app/services/add_to_cart_service.dart';
-import 'package:medecin_app/widgets/customMedicin.dart';
 
 import 'cartPage.dart';
 
@@ -40,12 +39,6 @@ class _ProductPageState extends State<ProductPage> {
           ),
           title: Text(medicin.trade_name),
           actions: [
-            IconButton(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                onPressed: () {},
-                icon: Icon(
-                  Icons.favorite_outline,
-                )),
             IconButton(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 onPressed: () {
@@ -155,7 +148,7 @@ class _ProductPageState extends State<ProductPage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "expiry date : "
+                                  "${S.of(context).DateTime} : "
                                   "${medicin.expiry_date.year}/${medicin.expiry_date.month}/${medicin.expiry_date.day}",
                                   style: TextStyle(
                                       fontSize: 15,
@@ -254,34 +247,29 @@ class _ProductPageState extends State<ProductPage> {
                                     MaterialStateProperty.all(kcolor)),
                             onPressed: () async {
                               if (_quantity != 0) {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return Center(
-                                          child: CircularProgressIndicator());
-                                    });
                                 try {
                                   await AddToCartService().addToCartService({
                                     "id": medicin.id,
                                     "quantity": _quantity.toString(),
                                     "token": token
                                   });
+
+                                  showSnackBar(context,
+                                      massege: S.of(context).added,
+                                      color: Colors.green);
+                                  _quantity = 0;
+                                  setState(() {});
                                 } on Exception catch (e) {
                                   showSnackBar(context,
-                                      massege: "الكمية المطلوبة غير متاحة",
+                                      massege: S.of(context).Not_available,
                                       color: Colors.red);
                                 }
-                                Navigator.pop(context);
-                                showSnackBar(context,
-                                    massege: "Added", color: Colors.green);
-                                _quantity = 0;
-                                setState(() {});
                               } else
                                 showSnackBar(context,
-                                    massege: "insert quantity",
+                                    massege: S.of(context).Insert_Quantity,
                                     color: Colors.red);
                             },
-                            child: Text("Add To Cart"))
+                            child: Text(S.of(context).AddTOCArt))
                       ],
                     ),
                   )
@@ -292,42 +280,3 @@ class _ProductPageState extends State<ProductPage> {
         ));
   }
 }
-  // Padding(
-  //             padding: const EdgeInsets.all(8.0),
-  //             child: TextField(
-  //               style: TextStyle(fontFamily: 'Kanit', color: Color(0xff51BEC4)),
-  //               keyboardType: TextInputType.number,
-  //               onChanged: (data) {
-  //                 quantity = data;
-  //               },
-  //               onSubmitted: (data) {
-  //                 quantity = data;
-  //               },
-  //               decoration: InputDecoration(
-  //                   hintText: S.of(context).Enter_the_quantity,
-  //                   suffixIcon: IconButton(
-  //                     padding: EdgeInsets.only(right: 15),
-  //                     onPressed: () async {
-  //                       try {
-  //                         await AddToCartService().addToCartService({
-  //                           "id": medicin.id,
-  //                           "quantity": quantity,
-  //                           "token": token
-  //                         });
-  //                       } on Exception catch (e) {
-  //                         showSnackBar(context,
-  //                             massege: "الكمية المطلوبة غير متاحة",
-  //                             color: Colors.red);
-  //                       }
-  //                     },
-  //                     icon: Icon(FontAwesomeIcons.cartPlus),
-  //                     color: kcolor,
-  //                   ),
-  //                   enabledBorder: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(20),
-  //                       borderSide: BorderSide(color: kcolor)),
-  //                   border: OutlineInputBorder(
-  //                       borderRadius: BorderRadius.circular(20),
-  //                       borderSide: BorderSide(color: kcolor))),
-  //             ),
-  //           ),

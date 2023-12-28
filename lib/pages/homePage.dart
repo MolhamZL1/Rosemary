@@ -14,13 +14,13 @@ import 'package:medecin_app/widgets/customCategoryCard.dart';
 
 class HomePage extends StatefulWidget {
   static String id = "HomePage";
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
   int currentPageIndex = 0;
+
   var pages = [HomePage(), OrdersPage(), FavouritesPage(), NotficationsPage()];
   @override
   void initState() {

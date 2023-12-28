@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:medecin_app/models/medicine_model.dart';
+import 'package:medecin_app/generated/l10n.dart';
 import 'package:medecin_app/pages/porductsPage.dart';
-import 'package:medecin_app/services/all_medicines_services.dart';
 
-import '../generated/l10n.dart';
-
-class CustomCategoryCard extends StatelessWidget {
+class CustomCategoryCard extends StatefulWidget {
   CustomCategoryCard({required this.category});
   String? category;
+
+  @override
+  State<CustomCategoryCard> createState() => _CustomCategoryCardState();
+}
+
+class _CustomCategoryCardState extends State<CustomCategoryCard> {
+  @override
+  List<dynamic>? favourite;
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        Navigator.pushNamed(context, ProductsPage.id, arguments: category);
+        Navigator.pushNamed(
+          context,
+          ProductsPage.id,
+          arguments: widget.category,
+        );
       },
       child: Container(
         height: 95,
@@ -47,7 +61,7 @@ class CustomCategoryCard extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(vertical: 15),
                     child: Text(
-                      category!,
+                      getText(),
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),
@@ -59,17 +73,32 @@ class CustomCategoryCard extends StatelessWidget {
   }
 
   getimage() {
-    if (category == "Analgesic")
+    if (widget.category == "Analgesic")
       return "assets/images/Anti.jpg";
-    else if (category == "Antibiotic")
-      return "assets/images/R (1).jpg";
-    else if (category == "Anti-inflammatory")
+    else if (widget.category == "Antibiotic")
       return "assets/images/R (2).jpg";
-    else if (category == "Antipyretic")
+    else if (widget.category == "Anti-inflammatory")
+      return "assets/images/R (1).jpg";
+    else if (widget.category == "Antipyretic")
       return "assets/images/R.jpg";
-    else if (category == "Antihistamine")
+    else if (widget.category == "Antihistamine")
       return "assets/images/R (3).jpg";
     else
       return "assets/images/R (4).jpg";
+  }
+
+  getText() {
+    if (widget.category == "Analgesic")
+      return S.of(context).Analgesic;
+    else if (widget.category == "Antibiotic")
+      return S.of(context).Antibiotic;
+    else if (widget.category == "Anti-inflammatory")
+      return S.of(context).Anti;
+    else if (widget.category == "Antipyretic")
+      return S.of(context).Antipyretic;
+    else if (widget.category == "Antihistamine")
+      return S.of(context).Antihistamine;
+    else
+      return S.of(context).others;
   }
 }

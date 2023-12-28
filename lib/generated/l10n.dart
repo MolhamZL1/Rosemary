@@ -389,6 +389,266 @@ class S {
       args: [],
     );
   }
+
+  /// `AddTOCArt`
+  String get AddTOCArt {
+    return Intl.message(
+      'Add to Cart',
+      name: 'add_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get AreYouSure {
+    return Intl.message(
+      'Are you sure',
+      name: 'are_you_sure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get No {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Paid {
+    return Intl.message(
+      'Paid',
+      name: 'paid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get not_paid {
+    return Intl.message(
+      'Not Paid',
+      name: 'not_paid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get preparing {
+    return Intl.message(
+      'preparing',
+      name: 'preparing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get sending {
+    return Intl.message(
+      'sending',
+      name: 'sending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get recived {
+    return Intl.message(
+      'recived',
+      name: 'recived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Enter_any_thing {
+    return Intl.message(
+      'Enter any thing',
+      name: 'Enter_any_thing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Insert_Quantity {
+    return Intl.message(
+      'Insert Quantity',
+      name: 'Insert_Quantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get added {
+    return Intl.message(
+      'Added',
+      name: 'added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Not_available {
+    return Intl.message(
+      'Quantity is not available',
+      name: 'Not_available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get incorrect {
+    return Intl.message(
+      'Password is incorrect',
+      name: 'incorrect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get not_Exist {
+    return Intl.message(
+      'Phone Number is not exist',
+      name: 'not_Exist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get succes {
+    return Intl.message(
+      'succesed',
+      name: 'succes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Password8 {
+    return Intl.message(
+      'Password must be 8 char at least',
+      name: 'Password8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Numbers10 {
+    return Intl.message(
+      'Phone Number must be 10 Numbers',
+      name: 'Numbers10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get User_already_exist {
+    return Intl.message(
+      'User already exist',
+      name: 'User_already_exist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get deleted {
+    return Intl.message(
+      'deleted',
+      name: 'deleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Analgesic {
+    return Intl.message(
+      'Analgesic',
+      name: 'Analgesic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Antibiotic {
+    return Intl.message(
+      'Antibiotic',
+      name: 'Antibiotic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Anti {
+    return Intl.message(
+      'Anti-inflammatory',
+      name: 'Anti-inflammatory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Antipyretic {
+    return Intl.message(
+      'Antipyretic',
+      name: 'Antipyretic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get Antihistamine {
+    return Intl.message(
+      'Antihistamine',
+      name: 'Antihistamine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AddTOCArt`
+  String get others {
+    return Intl.message(
+      'Others',
+      name: 'others',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

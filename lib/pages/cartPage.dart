@@ -17,6 +17,10 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  updateUi() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +64,7 @@ class _CartPageState extends State<CartPage> {
                                 itemBuilder: (context, index) {
                                   return CustomCardCart(
                                     medecine: medicines[index],
+                                    fun: updateUi,
                                   );
                                 }),
                           ),
@@ -68,17 +73,12 @@ class _CartPageState extends State<CartPage> {
                                 horizontal: 15, vertical: 20),
                             child: CustomButton(
                                 onTap: () async {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return Center(
-                                            child: CircularProgressIndicator());
-                                      });
                                   await AddOrderService().addOrderService(
                                       {"token": token, "username": username});
-                                  Navigator.pop(context);
+
                                   showSnackBar(context,
-                                      massege: "success", color: Colors.green);
+                                      massege: S.of(context).succes,
+                                      color: Colors.green);
                                   setState(() {});
                                 },
                                 text: S.of(context).Buy),

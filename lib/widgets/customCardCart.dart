@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:medecin_app/constants.dart';
 import 'package:medecin_app/generated/l10n.dart';
+import 'package:medecin_app/helper/showSnackBar.dart';
 import 'package:medecin_app/models/medicine_model.dart';
 import 'package:medecin_app/pages/productPage.dart';
+import 'package:medecin_app/services/remove_cart_service.dart';
 
-//NOTE:this card is just for test
-class CustomCardCart extends StatelessWidget {
-  CustomCardCart({required this.medecine});
+class CustomCardCart extends StatefulWidget {
+  CustomCardCart({required this.medecine, required this.fun});
   MedicineModel medecine;
+  Function? fun;
+
+  @override
+  State<CustomCardCart> createState() => _CustomCardCartState();
+}
+
+class _CustomCardCartState extends State<CustomCardCart> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, ProductPage.id, arguments: medecine);
+        Navigator.pushNamed(context, ProductPage.id,
+            arguments: widget.medecine);
       },
       child: Stack(clipBehavior: Clip.none, children: [
         Container(
@@ -38,20 +48,36 @@ class CustomCardCart extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Name"
+                            "${S.of(context).product_Name}"
                             ":"
-                            " ${medecine.scientific_name.substring(0, 7)}",
+                            " ${widget.medecine.scientific_name.substring(0, 7)}",
                             style: TextStyle(color: Colors.white),
                           ),
                           GestureDetector(
-                              onTap: () {}, child: Icon(Icons.delete))
+                              onTap: () async {
+                                try {
+                                  await RemoveCartService().removeCartService({
+                                    "id": widget.medecine.id,
+                                    "token": token
+                                  });
+
+                                  showSnackBar(context,
+                                      massege: S.of(context).deleted,
+                                      color: Colors.green);
+                                } on Exception catch (e) {
+                                  showSnackBar(context,
+                                      massege: e.toString(), color: Colors.red);
+                                }
+                                widget.fun!();
+                              },
+                              child: Icon(Icons.delete))
                         ],
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
-                        "${S.of(context).factory} : ${medecine.manufacturer.substring(0, 7)}",
+                        "${S.of(context).factory} : ${widget.medecine.manufacturer.substring(0, 7)}",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -61,11 +87,12 @@ class CustomCardCart extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${S.of(context).price} : ${medecine.price}' r'$',
+                            '${S.of(context).price} : ${widget.medecine.price}'
+                            r'$',
                             style: TextStyle(color: Colors.white),
                           ),
                           Text(
-                            medecine.quantity_available
+                            widget.medecine.quantity_available
                                 .toString(), //medecine.quantityRequired
                             style: TextStyle(color: Colors.white),
                           )

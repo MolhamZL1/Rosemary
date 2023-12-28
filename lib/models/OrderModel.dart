@@ -1,5 +1,3 @@
-import 'package:medecin_app/models/medicine_model.dart';
-
 class OrderModel {
   final dynamic ordernumber;
   final String username;

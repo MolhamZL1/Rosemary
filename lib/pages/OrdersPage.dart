@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:medecin_app/constants.dart';
+import 'package:medecin_app/generated/l10n.dart';
 import 'package:medecin_app/models/OrderModel.dart';
 import 'package:medecin_app/services/all_orders_service.dart';
 import 'package:medecin_app/widgets/customOrder.dart';
 
-class OrdersPage extends StatelessWidget {
+class OrdersPage extends StatefulWidget {
   const OrdersPage({super.key});
   static String id = "OrdersPage";
+
+  @override
+  State<OrdersPage> createState() => _OrdersPageState();
+}
+
+class _OrdersPageState extends State<OrdersPage> {
+  String dropdownvalue = "category";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
         child: FutureBuilder<List<OrderModel>>(

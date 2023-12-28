@@ -7,13 +7,18 @@ import 'package:medecin_app/services/all_medicines_services.dart';
 import 'package:medecin_app/widgets/customCard.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-class ProductsPage extends StatelessWidget {
+class ProductsPage extends StatefulWidget {
+  static String id = "ProductsPage";
+
+  @override
+  State<ProductsPage> createState() => _ProductsPageState();
+}
+
+class _ProductsPageState extends State<ProductsPage> {
   int getCrossAxisCount() {
     if (kIsWeb) return 6;
     return 2;
   }
-
-  static String id = "ProductsPage";
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +77,7 @@ class ProductsPage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return CustomCard(
                             medicine: medicines[index],
+                            isfavourite: false,
                           );
                         });
               } else

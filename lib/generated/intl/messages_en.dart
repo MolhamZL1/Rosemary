@@ -53,13 +53,51 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage(" Password"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
-        "product_Name": MessageLookupByLibrary.simpleMessage("Product Name"),
+        "product_Name": MessageLookupByLibrary.simpleMessage("Name"),
         "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "quantity1": MessageLookupByLibrary.simpleMessage("quantity"),
         "scientificName":
             MessageLookupByLibrary.simpleMessage("Scientific Name"),
         "state": MessageLookupByLibrary.simpleMessage("state"),
         "title_login": MessageLookupByLibrary.simpleMessage("LogIn"),
-        "title_logo": MessageLookupByLibrary.simpleMessage("Rosemary")
+        "title_logo": MessageLookupByLibrary.simpleMessage("Rosemary"),
+        //
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
+        "preparing": MessageLookupByLibrary.simpleMessage("preparing"),
+        "sending": MessageLookupByLibrary.simpleMessage("sending"),
+        "recived": MessageLookupByLibrary.simpleMessage("recived"),
+        "are_you_sure": MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
+        "paid": MessageLookupByLibrary.simpleMessage("Paid"),
+        "not_paid": MessageLookupByLibrary.simpleMessage("Not Paid"),
+
+        "succes": MessageLookupByLibrary.simpleMessage("succesed"),
+        "not_Exist":
+            MessageLookupByLibrary.simpleMessage("Phone Number is not exist"),
+        "incorrect":
+            MessageLookupByLibrary.simpleMessage("Password is incorrect"),
+        "added": MessageLookupByLibrary.simpleMessage("Added"),
+        "Not_available":
+            MessageLookupByLibrary.simpleMessage("Quantity is not available"),
+        "Insert_Quantity":
+            MessageLookupByLibrary.simpleMessage("Insert Quantity"),
+        "Enter_any_thing":
+            MessageLookupByLibrary.simpleMessage("Enter any thing"),
+        "User_already_exist":
+            MessageLookupByLibrary.simpleMessage("User already exist"),
+        "Numbers10": MessageLookupByLibrary.simpleMessage(
+            "Phone Number must be 10 Numbers"),
+        "Password8": MessageLookupByLibrary.simpleMessage(
+            "Password must be 8 char at least"),
+        "deleted": MessageLookupByLibrary.simpleMessage("deleted"),
+        //
+        "Analgesic": MessageLookupByLibrary.simpleMessage("Analgesic"),
+        "Antibiotic": MessageLookupByLibrary.simpleMessage("Antibiotic"),
+        "Anti-inflammatory":
+            MessageLookupByLibrary.simpleMessage("Anti-inflammatory"),
+        "Antipyretic": MessageLookupByLibrary.simpleMessage("Antipyretic"),
+        "Antihistamine": MessageLookupByLibrary.simpleMessage("Antihistamine"),
+        "others": MessageLookupByLibrary.simpleMessage("Others"),
       };
 }

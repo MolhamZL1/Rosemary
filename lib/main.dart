@@ -22,9 +22,14 @@ void main() async {
       child: MedecinApp()));
 }
 
-class MedecinApp extends StatelessWidget {
-  const MedecinApp({super.key});
+class MedecinApp extends StatefulWidget {
+  MedecinApp({super.key});
 
+  @override
+  State<MedecinApp> createState() => _MedecinAppState();
+}
+
+class _MedecinAppState extends State<MedecinApp> {
   @override
   Widget build(BuildContext context) {
     return MediaQuery(

@@ -46,16 +46,52 @@ class MessageLookup extends MessageLookupByLibrary {
         "UserName": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "category": MessageLookupByLibrary.simpleMessage("التصنيف"),
         "commercialName": MessageLookupByLibrary.simpleMessage("الاسم تجاري"),
-        "factory": MessageLookupByLibrary.simpleMessage("الشركة المصنعة"),
+        "factory": MessageLookupByLibrary.simpleMessage("الشركة"),
         "medicin": MessageLookupByLibrary.simpleMessage("الدواء"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "price": MessageLookupByLibrary.simpleMessage("السعر"),
-        "product_Name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
+        "product_Name": MessageLookupByLibrary.simpleMessage("اسم"),
         "quantity": MessageLookupByLibrary.simpleMessage("الكمية"),
         "scientificName": MessageLookupByLibrary.simpleMessage("الاسم علمي"),
         "state": MessageLookupByLibrary.simpleMessage("الحالة"),
         "title_login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-        "title_logo": MessageLookupByLibrary.simpleMessage("روزماري")
+        "title_logo": MessageLookupByLibrary.simpleMessage("روزماري"),
+        //
+        "add_to_cart": MessageLookupByLibrary.simpleMessage("اضافة الى السلة"),
+        "preparing": MessageLookupByLibrary.simpleMessage("قيد التحضير"),
+        "sending": MessageLookupByLibrary.simpleMessage("تم الارسال"),
+        "recived": MessageLookupByLibrary.simpleMessage("مستلمة"),
+        "are_you_sure": MessageLookupByLibrary.simpleMessage("هل انت متأكد؟"),
+        "yes": MessageLookupByLibrary.simpleMessage("نعم"),
+        "no": MessageLookupByLibrary.simpleMessage("لا"),
+        "paid": MessageLookupByLibrary.simpleMessage("مدفوع"),
+        "not_paid": MessageLookupByLibrary.simpleMessage("غير مدفوع"),
+
+        "succes": MessageLookupByLibrary.simpleMessage("تمت العملية بنجاح"),
+        "not_Exist": MessageLookupByLibrary.simpleMessage("الرقم غير موجود"),
+        "incorrect":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
+        "added": MessageLookupByLibrary.simpleMessage("تمت الاضافة بنجاح"),
+        "Not_available":
+            MessageLookupByLibrary.simpleMessage("الكمية غير متوفرة"),
+        "Insert_Quantity": MessageLookupByLibrary.simpleMessage("ادخل الكمية"),
+        "Enter_any_thing": MessageLookupByLibrary.simpleMessage("ادخل اي شيء"),
+        "User_already_exist":
+            MessageLookupByLibrary.simpleMessage("المستخدم موجود بالفعل"),
+        "Numbers10": MessageLookupByLibrary.simpleMessage(
+            "الرقم يجب ان يكون من 10 ارقام"),
+        "Password8": MessageLookupByLibrary.simpleMessage(
+            "كلمة المرور يجب ان تكون من 8 محارف على الاقل"),
+        "deleted": MessageLookupByLibrary.simpleMessage("تم الحذف بنجاح"),
+        //
+        "Analgesic": MessageLookupByLibrary.simpleMessage("مسكن"),
+        "Antibiotic": MessageLookupByLibrary.simpleMessage("مضاد حيوي"),
+        "Anti-inflammatory":
+            MessageLookupByLibrary.simpleMessage("مضاد التهاب"),
+        "Antipyretic": MessageLookupByLibrary.simpleMessage("خافض للحرارة"),
+        "Antihistamine":
+            MessageLookupByLibrary.simpleMessage("مضادات الهيستامين"),
+        "others": MessageLookupByLibrary.simpleMessage("اخرى"),
       };
 }

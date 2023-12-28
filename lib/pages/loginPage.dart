@@ -152,10 +152,10 @@ class _LogInPageState extends State<LogInPage> {
   getmessage(String message) {
     if (message ==
         "Exception: there is a problem with status code 401 with body {message: phone number is not exist}")
-      return "Phone Number is not exist"; //arabic
+      return S.of(context).not_Exist; //arabic
     else if (message ==
         "Exception: there is a problem with status code 401 with body {message: password is incorrect}")
-      return "Password is incorrect"; //arabic
+      return S.of(context).incorrect; //arabic
     else
       return message;
   }

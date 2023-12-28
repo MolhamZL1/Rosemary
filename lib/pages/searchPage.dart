@@ -52,7 +52,7 @@ class _SearchPageState extends State<SearchPage> {
             onSubmitted: (value) {
               if (value.isEmpty) {
                 showSnackBar(context,
-                    massege: "Enter any thing", color: Colors.red);
+                    massege: S.of(context).Enter_any_thing, color: Colors.red);
               } else {
                 searchingInput = value;
               }
@@ -141,6 +141,7 @@ class _SearchPageState extends State<SearchPage> {
                                     itemBuilder: (context, index) {
                                       return CustomCard(
                                         medicine: medicines[index],
+                                        isfavourite: false,
                                       );
                                     });
                           } else {

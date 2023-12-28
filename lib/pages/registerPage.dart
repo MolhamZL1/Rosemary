@@ -169,13 +169,13 @@ class _RegisterPageState extends State<RegisterPage> {
   getmessage(String message) {
     if (message ==
         "Exception: there is a problem with status code 400 with body {message: User already exists}")
-      return "User already exist"; //arabic
+      return S.of(context).not_Exist; //arabic
     else if (message ==
         "Exception: there is a problem with status code 400 with body {message: phone number must be 10 numbers}")
-      return "Phone Number must be 10 Numbers"; //arabic
+      return S.of(context).Numbers10; //arabic
     else if (message ==
         "Exception: there is a problem with status code 400 with body {message: password must be 8 char at least}")
-      return "Password must be 8 char at least"; //arabic
+      return S.of(context).Password8; //arabic
     else
       return message;
   }
