@@ -39,11 +39,11 @@ class _LogInPageState extends State<LogInPage> {
                 children: [
                   Image.asset(
                     "assets/images/Login.png",
-                    height: 200,
+                    height: 150,
                   )
                 ],
               ),
-              const SizedBox(height: 100),
+              const SizedBox(height: 10),
               Text(
                 S.of(context).title_login,
                 style: TextStyle(

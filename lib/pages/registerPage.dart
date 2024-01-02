@@ -40,11 +40,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   Image.asset(
                     "assets/images/register.png",
-                    height: 200,
+                    height: 150,
                   )
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
               Text(
                 S.of(context).Register,
                 style: TextStyle(

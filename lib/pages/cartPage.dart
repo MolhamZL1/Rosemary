@@ -73,8 +73,11 @@ class _CartPageState extends State<CartPage> {
                                 horizontal: 15, vertical: 20),
                             child: CustomButton(
                                 onTap: () async {
-                                  await AddOrderService().addOrderService(
-                                      {"token": token, "username": username});
+                                  await AddOrderService().addOrderService({
+                                    "token": token,
+                                    "username": username,
+                                    "date": DateTime.now().toString()
+                                  });
 
                                   showSnackBar(context,
                                       massege: S.of(context).succes,

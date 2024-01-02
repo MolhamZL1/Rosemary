@@ -37,35 +37,59 @@ class CustomOrder extends StatelessWidget {
             end: Alignment.centerRight,
           ),
         ),
-        height: 150,
+        height: 180,
         child: Padding(
           padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${S.of(context).Order_Number} : ${order!.ordernumber}",
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-              Text(
-                "${S.of(context).state} : ${getText()}",
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "${getTextpaid()}",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  Text(
-                    r"$" "${order!.total_price.toString()}",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ],
-              ),
-            ],
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerRight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${S.of(context).Order_Number} : ${order!.ordernumber}",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "${S.of(context).state} : ${getText()}",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "${order!.date.year}"
+                  "/"
+                  "${order!.date.month}"
+                  "/"
+                  "${order!.date.day}",
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "${getTextpaid()}",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                    SizedBox(
+                      width: 220,
+                    ),
+                    Text(
+                      r"$" "${order!.total_price.toString()}",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

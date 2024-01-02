@@ -6,15 +6,16 @@ class OrderModel {
   final dynamic total_quantity;
   final String paid;
   final dynamic medicines;
-  OrderModel({
-    required this.ordernumber,
-    required this.username,
-    required this.status,
-    required this.total_price,
-    required this.total_quantity,
-    required this.paid,
-    required this.medicines,
-  });
+  final DateTime date;
+  OrderModel(
+      {required this.ordernumber,
+      required this.username,
+      required this.status,
+      required this.total_price,
+      required this.total_quantity,
+      required this.paid,
+      required this.medicines,
+      required this.date});
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
@@ -24,6 +25,7 @@ class OrderModel {
         total_price: json["total_price"],
         total_quantity: json["total_quantity"],
         paid: json["paid"],
+        date: DateTime.parse(json["date"]),
         medicines: json["medicines"]);
   }
 }
