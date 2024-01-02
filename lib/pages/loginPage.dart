@@ -93,6 +93,7 @@ class _LogInPageState extends State<LogInPage> {
                         builder: (context) {
                           return Center(child: CircularProgressIndicator());
                         });
+
                     await login(context);
                   }
                 },

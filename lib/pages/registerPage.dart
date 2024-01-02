@@ -101,12 +101,14 @@ class _RegisterPageState extends State<RegisterPage> {
               CustomButton(
                 onTap: () async {
                   if (formKey.currentState!.validate()) {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return Center(child: CircularProgressIndicator());
-                        });
-                    await register(context);
+                    if (phoneNumber![0] != '0' || phoneNumber![1] != '9') {
+                      showSnackBar(
+                        context,
+                        massege: getmessage("Phone Number must Start with 09"),
+                        color: Colors.red,
+                      );
+                    } else
+                      await register(context);
                   }
                 },
                 text: S.of(context).Register,
@@ -141,6 +143,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> register(BuildContext context) async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(child: CircularProgressIndicator());
+        });
     try {
       Map<String, dynamic> data = await Api().post(
         url: '$baseUrl/register',
