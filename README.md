@@ -1,5 +1,6 @@
 # medicines_app
-
+this app for pharmacis.
+the app for warehouse: https://github.com/m-hilani/warehouse.git
 A new Flutter project.
 ### backend using laravel:https://github.com/MolhamZL1/laravel.git
 ## Getting Started
