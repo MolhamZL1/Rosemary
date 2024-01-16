@@ -1,16 +1,18 @@
-# medecin_app
+# medicines_app
+this app for pharmacis.
+the app for warehouse: https://github.com/m-hilani/warehouse.git
 
-A new Flutter project.
-
+### backend using laravel:https://github.com/MolhamZL1/laravel.git
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+the name of the app is Rosemary.
 
-A few resources to get you started if this is your first Flutter project:
+This project is a an application for buying medicines.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+you can register by phone number.
+the medicines is sorted by categories.
+you can add and remove medicines to cart with quantities and order them.
+you can search for the medicines and categories.
+you can watch the states of orders.
+and you can add meicines to favorites.
+there is two languages Arabic and English.
