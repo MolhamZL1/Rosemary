@@ -157,6 +157,7 @@ class _RegisterPageState extends State<RegisterPage> {
           "password": "$password"
         },
       );
+      await CacheNetwork.cacheInitialization();
       await CacheNetwork.insertToCache(
           key: 'username', value: data['username']);
       await CacheNetwork.insertToCache(key: 'token', value: data['token']);

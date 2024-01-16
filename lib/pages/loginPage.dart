@@ -134,6 +134,7 @@ class _LogInPageState extends State<LogInPage> {
         url: '$baseUrl/login',
         body: {"phone": "$phoneNumber", "password": "$password"},
       );
+      await CacheNetwork.cacheInitialization();
       await CacheNetwork.insertToCache(key: 'token', value: data['token']);
       await CacheNetwork.insertToCache(
           key: 'username', value: data['username']);
